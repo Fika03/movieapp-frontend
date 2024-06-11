@@ -35,5 +35,5 @@ export async function GET(request: Request) {
   }
 
   // Redirect to an error page if the code exchange fails
-  return NextResponse.redirect(`${origin}/auth/auth-code-error`);
+  return NextResponse.redirect(`/auth/auth-code-error`);
 }
