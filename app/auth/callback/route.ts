@@ -29,11 +29,13 @@ export async function GET(request: Request) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
 
     if (!error) {
-      console.log(`${origin}${next}`);
-      return NextResponse.redirect(`/protected`);
+      console.log(
+        `origin and next is logged here origin: ${origin} next: ${next}`
+      );
+      return NextResponse.redirect(`${origin}/protected`);
     }
   }
 
   // Redirect to an error page if the code exchange fails
-  return NextResponse.redirect(`/auth/auth-code-error`);
+  return NextResponse.redirect(`${origin}/auth/auth-code-error`);
 }
