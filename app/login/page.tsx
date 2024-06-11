@@ -8,7 +8,7 @@ import { userInfo } from "os";
 export default function Login({
   searchParams,
 }: {
-  searchParams: { message: string; error: string };
+  searchParams: { message: string; error: string; source: string };
 }) {
   const signIn = async (formData: FormData) => {
     "use server";
@@ -24,9 +24,7 @@ export default function Login({
 
     if (error) {
       console.log("Sign In Error:", error);
-      return redirect(
-        `/login?message=Could not authenticate user&error=${error.message}`
-      );
+      return redirect(`/login?message=Could not authenticate user`);
     }
 
     return redirect("/protected");
@@ -51,7 +49,7 @@ export default function Login({
     if (error) {
       console.log("Sign Up Error:", error);
       return redirect(
-        `/login?message=Could not authenticate user&error=${error.message}`
+        `/login?message=Could not authenticate user&error=${error.message}&source=signup`
       );
     }
 
@@ -60,13 +58,14 @@ export default function Login({
 
   const signInWithGoogle = async () => {
     "use server";
+    const origin = headers().get("origin");
     const supabase = createClient();
 
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
 
       options: {
-        redirectTo: `http://localhost:3000/auth/callback`,
+        redirectTo: `${origin}/auth/callback`,
         queryParams: {
           access_type: "offline",
           prompt: "consent",
@@ -142,7 +141,7 @@ export default function Login({
             {searchParams.message}
           </p>
         )}
-        {searchParams?.error && (
+        {searchParams?.error && searchParams?.source === "signup" && (
           <p className="mt-2 p-4 bg-red-200 text-red-800 text-center">
             {searchParams.error}
           </p>
