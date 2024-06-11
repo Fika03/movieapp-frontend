@@ -3,9 +3,14 @@ import { NextResponse } from "next/server";
 import { createServerClient, CookieOptions } from "@supabase/ssr";
 
 export async function GET(request: Request) {
-  const { searchParams, origin } = new URL(request.url);
+  const { searchParams } = new URL(request.url);
   const code = searchParams.get("code");
   const next = searchParams.get("next") ?? "/"; // Default redirect URL if 'next' parameter is not provided
+
+  const origin =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : `https://${process.env.VERCEL_URL}`;
 
   if (code) {
     const cookieStore = cookies();
@@ -27,18 +32,11 @@ export async function GET(request: Request) {
       }
     );
     const { error } = await supabase.auth.exchangeCodeForSession(code);
-    console.log(
-      `origin and next is logged here origin: ${origin} next: ${next}`
-    );
     if (!error) {
-      console.log(
-        `origin and next is logged here origin: ${origin} next: ${next}`
-      );
       return NextResponse.redirect(`${origin}/protected`);
     }
   }
 
   // Redirect to an error page if the code exchange fails
-  console.log(`origin and next is logged here origin: ${origin} next: ${next}`);
   return NextResponse.redirect(`${origin}/auth/auth-code-error`);
 }
