@@ -10,6 +10,7 @@ export async function GET(request: Request) {
   const origin = "https://movieapp-frontend-tau.vercel.app";
 
   // Log the origin and environment for debugging
+
   console.log("Environment:", process.env.NODE_ENV);
   console.log("VERCEL_URL:", process.env.VERCEL_URL);
   console.log("Origin:", origin);
