@@ -27,7 +27,9 @@ export async function GET(request: Request) {
       }
     );
     const { error } = await supabase.auth.exchangeCodeForSession(code);
-
+    console.log(
+      `origin and next is logged here origin: ${origin} next: ${next}`
+    );
     if (!error) {
       console.log(
         `origin and next is logged here origin: ${origin} next: ${next}`
