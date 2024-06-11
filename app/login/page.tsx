@@ -65,6 +65,8 @@ export default function Login({
         ? "http://localhost:3000"
         : `https://${process.env.VERCEL_URL}`;
 
+    console.log("This is my origin:" + process.env.VERCEL_URL);
+
     // Log the origin for debugging
     console.log("Sign In with Google - Origin:", origin);
 
