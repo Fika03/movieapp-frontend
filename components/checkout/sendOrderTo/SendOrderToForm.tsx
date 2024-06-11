@@ -1,5 +1,6 @@
 import { CheckoutContext } from "@/context/checkout/CheckoutContext";
 import { FormEvent, useContext } from "react";
+import styles from "./SendOrderToForm.module.css";
 
 export const SendOrderToForm = () => {
   const { handleFormChange, customerOrderInfo } = useContext(CheckoutContext);
@@ -10,9 +11,10 @@ export const SendOrderToForm = () => {
 
   return (
     <form onSubmit={saveOrderInformation}>
-      <section>
-        <article>
+      <section className="flex flex-col justify-center w-full">
+        <article className="flex flex-col gap-4 m-2 md:flex-row md:gap-2">
           <input
+            className={styles.formInput}
             type="email"
             name="email"
             value={customerOrderInfo?.email}
@@ -20,6 +22,7 @@ export const SendOrderToForm = () => {
             placeholder="Email *"
           />
           <input
+            className={styles.formInput}
             type="number"
             placeholder="Phone number *"
             name="phoneNo"
@@ -27,8 +30,9 @@ export const SendOrderToForm = () => {
             onChange={handleFormChange}
           />
         </article>
-        <article>
+        <article className="flex flex-col gap-4 m-2">
           <input
+            className={styles.formInput}
             type="text"
             name="name"
             placeholder="First and last name *"
@@ -36,6 +40,7 @@ export const SendOrderToForm = () => {
             value={customerOrderInfo.name}
           />
           <input
+            className={styles.formInput}
             type="text"
             name="address"
             value={customerOrderInfo.address}
@@ -43,6 +48,7 @@ export const SendOrderToForm = () => {
             placeholder="Street address *"
           />
           <input
+            className={styles.formInput}
             type="text"
             name="city"
             value={customerOrderInfo.city}
