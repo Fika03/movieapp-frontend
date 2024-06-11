@@ -4,8 +4,7 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
-
+  : "https://youtube.com/";
 export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Next.js and Supabase Starter Kit",
