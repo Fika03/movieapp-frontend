@@ -7,10 +7,7 @@ export async function GET(request: Request) {
   const code = searchParams.get("code");
   const next = searchParams.get("next") ?? "/"; // Default redirect URL if 'next' parameter is not provided
 
-  const origin =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : `https://${process.env.VERCEL_URL}`;
+  const origin = "https://movieapp-frontend-tau.vercel.app";
 
   // Log the origin and environment for debugging
   console.log("Environment:", process.env.NODE_ENV);
