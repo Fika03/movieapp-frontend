@@ -18,11 +18,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="min-h-screen flex flex-col items-center">
-          {children}
-        </main>
-      </body>
+      <head>
+        <script
+          src="https://accounts.google.com/gsi/client"
+          async
+          defer
+        ></script>
+        <body className="bg-background text-foreground">
+          <main className="min-h-screen flex flex-col items-center">
+            {children}
+          </main>
+        </body>
+      </head>
     </html>
   );
 }

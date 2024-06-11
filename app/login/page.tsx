@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "./submit-button";
+import { userInfo } from "os";
 
 export default function Login({
   searchParams,
@@ -45,10 +46,35 @@ export default function Login({
     });
 
     if (error) {
+      console.log("error: ", error);
       return redirect("/login?message=Could not authenticate user");
     }
 
     return redirect("/login?message=Check email to continue sign in process");
+  };
+
+  const signInWithGoogle = async () => {
+    "use server";
+    const supabase = createClient();
+
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+
+      options: {
+        redirectTo: `http://localhost:3000/auth/callback`,
+        queryParams: {
+          access_type: "offline",
+          prompt: "consent",
+        },
+      },
+    });
+
+    if (error) {
+      console.error("Google Sign In Error:", error);
+      return redirect("/login?message=Google Sign In Error");
+    }
+    console.log(data);
+    return redirect(data.url);
   };
 
   return (
@@ -73,7 +99,6 @@ export default function Login({
         </svg>{" "}
         Back
       </Link>
-
       <form className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground">
         <label className="text-md" htmlFor="email">
           Email
@@ -82,7 +107,6 @@ export default function Login({
           className="rounded-md px-4 py-2 bg-inherit border mb-6"
           name="email"
           placeholder="you@example.com"
-          required
         />
         <label className="text-md" htmlFor="password">
           Password
@@ -92,7 +116,6 @@ export default function Login({
           type="password"
           name="password"
           placeholder="••••••••"
-          required
         />
         <SubmitButton
           formAction={signIn}
@@ -108,11 +131,22 @@ export default function Login({
         >
           Sign Up
         </SubmitButton>
+
         {searchParams?.message && (
           <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
             {searchParams.message}
           </p>
         )}
+        <div className="w-full">
+          <SubmitButton
+            type="button"
+            formAction={signInWithGoogle}
+            className="bg-blue-600 rounded-md px-4 py-2 text-white mb-2 w-full"
+            pendingText="Signing In..."
+          >
+            Sign In with Google
+          </SubmitButton>
+        </div>
       </form>
     </div>
   );
