@@ -58,12 +58,18 @@ export default function Login({
 
   const signInWithGoogle = async () => {
     "use server";
-    const origin = headers().get("origin");
     const supabase = createClient();
+
+    const origin =
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3000"
+        : `https://${process.env.VERCEL_URL}`;
+
+    // Log the origin for debugging
+    console.log("Sign In with Google - Origin:", origin);
 
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: "google",
-
       options: {
         redirectTo: `${origin}/auth/callback`,
         queryParams: {
@@ -77,7 +83,6 @@ export default function Login({
       console.error("Google Sign In Error:", error);
       return redirect("/login?message=Could not authenticate user");
     }
-    console.log(data);
     return redirect(data.url);
   };
 

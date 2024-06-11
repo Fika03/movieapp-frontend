@@ -12,6 +12,11 @@ export async function GET(request: Request) {
       ? "http://localhost:3000"
       : `https://${process.env.VERCEL_URL}`;
 
+  // Log the origin and environment for debugging
+  console.log("Environment:", process.env.NODE_ENV);
+  console.log("VERCEL_URL:", process.env.VERCEL_URL);
+  console.log("Origin:", origin);
+
   if (code) {
     const cookieStore = cookies();
     const supabase = createServerClient(
