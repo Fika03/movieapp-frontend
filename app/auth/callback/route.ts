@@ -30,7 +30,9 @@ export async function GET(request: Request) {
 
     if (!error) {
       console.log(`${origin}${next}`);
-      return NextResponse.redirect(`${origin}/protected`);
+      return NextResponse.redirect(
+        `https://${process.env.VERCEL_URL}protected`
+      );
     }
   }
 
