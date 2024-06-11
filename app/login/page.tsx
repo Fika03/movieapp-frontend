@@ -8,7 +8,7 @@ import { userInfo } from "os";
 export default function Login({
   searchParams,
 }: {
-  searchParams: { message: string };
+  searchParams: { message: string; error: string };
 }) {
   const signIn = async (formData: FormData) => {
     "use server";
@@ -23,7 +23,10 @@ export default function Login({
     });
 
     if (error) {
-      return redirect("/login?message=Could not authenticate user");
+      console.log("Sign In Error:", error);
+      return redirect(
+        `/login?message=Could not authenticate user&error=${error.message}`
+      );
     }
 
     return redirect("/protected");
@@ -46,8 +49,10 @@ export default function Login({
     });
 
     if (error) {
-      console.log("error: ", error);
-      return redirect("/login?message=Could not authenticate user");
+      console.log("Sign Up Error:", error);
+      return redirect(
+        `/login?message=Could not authenticate user&error=${error.message}`
+      );
     }
 
     return redirect("/login?message=Check email to continue sign in process");
@@ -71,7 +76,7 @@ export default function Login({
 
     if (error) {
       console.error("Google Sign In Error:", error);
-      return redirect("/login?message=Google Sign In Error");
+      return redirect("/login?message=Could not authenticate user");
     }
     console.log(data);
     return redirect(data.url);
@@ -135,6 +140,11 @@ export default function Login({
         {searchParams?.message && (
           <p className="mt-4 p-4 bg-foreground/10 text-foreground text-center">
             {searchParams.message}
+          </p>
+        )}
+        {searchParams?.error && (
+          <p className="mt-2 p-4 bg-red-200 text-red-800 text-center">
+            {searchParams.error}
           </p>
         )}
         <div className="w-full">
