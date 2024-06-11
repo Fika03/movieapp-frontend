@@ -37,5 +37,6 @@ export async function GET(request: Request) {
   }
 
   // Redirect to an error page if the code exchange fails
+  console.log(`origin and next is logged here origin: ${origin} next: ${next}`);
   return NextResponse.redirect(`${origin}/auth/auth-code-error`);
 }
