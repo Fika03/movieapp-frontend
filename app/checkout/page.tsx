@@ -1,4 +1,5 @@
 "use client";
+import { CartProducts } from "@/components/checkout/products/CartProducts";
 import { SendOrderToForm } from "@/components/checkout/sendOrderTo/SendOrderToForm";
 import { PayWithStripe } from "@/components/checkout/stripe/PayWithStripe";
 import {
@@ -19,7 +20,7 @@ export default function Checkout() {
     },
     handleFormChange: () => {},
   });
-
+  const [open, setOpen] = useState<boolean>(false);
   checkoutState.handleFormChange = (e: ChangeEvent<HTMLInputElement>) => {
     const propertyName = e.target.name;
 
@@ -43,12 +44,35 @@ export default function Checkout() {
     <>
       <CheckoutContext.Provider value={checkoutState}>
         <h1>Checkout</h1>
-        <section>
-          <SendOrderToForm />
-        </section>
+        <section className="xl:flex xl:flex-row-reverse">
+          <article className="hidden md:block">
+            <CartProducts />
+          </article>
+          <section>
+            <article>
+              <button
+                className="md:hidden fixed bg-white text-black w-full top-0 left-0"
+                onClick={() => setOpen((prev) => !open)}
+              >
+                Cart
+              </button>
 
-        <section>
-          <PayWithStripe />
+              {open && (
+                <div className="md:hidden">
+                  <CartProducts />
+                </div>
+              )}
+            </article>
+          </section>
+          <section className="flex justify-center flex-col items-center">
+            <section>
+              <SendOrderToForm />
+            </section>
+
+            <section>
+              <PayWithStripe />
+            </section>
+          </section>
         </section>
       </CheckoutContext.Provider>
     </>
