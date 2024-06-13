@@ -1,9 +1,10 @@
 export interface IMovie {
   Title: string;
-  Year: number;
+  Year: string;
   imdbID: string;
-  Type: string;
+  Type: "movie" | "series" | "game";
   Poster: string;
-  amount: string;
+  amount: number;
   price: number;
+  Description: string;
 }
