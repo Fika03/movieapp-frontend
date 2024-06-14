@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "./submit-button";
-import { userInfo } from "os";
 
 export default function Login({
   searchParams,
@@ -61,6 +60,7 @@ export default function Login({
     const supabase = createClient();
 
     const origin = "https://movieapp-frontend-tau.vercel.app";
+    const origin2 = "http://localhost:3000";
 
     console.log("This is my origin:" + process.env.VERCEL_URL);
 
@@ -77,7 +77,7 @@ export default function Login({
         },
       },
     });
-
+    console.log("data.url:", data.url);
     if (error) {
       console.error("Google Sign In Error:", error);
       return redirect("/login?message=Could not authenticate user");
