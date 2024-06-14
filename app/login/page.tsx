@@ -3,7 +3,6 @@ import { headers } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "./submit-button";
-import { userInfo } from "os";
 
 export default function Login({
   searchParams,
