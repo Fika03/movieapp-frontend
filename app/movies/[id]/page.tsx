@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchMovie } from "@/utils/fetchMovie";
 import { useCart } from "@/context/cart/CartContext";
-import { IMovie } from "@/app/Models/IMovie";
+import { IMovie } from "@/models/IMovie";
 
 interface Props {
   params: { id: string };

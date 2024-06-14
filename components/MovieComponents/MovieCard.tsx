@@ -1,4 +1,4 @@
-import { IMovie } from "@/app/Models/IMovie";
+import { IMovie } from "@/models/IMovie";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

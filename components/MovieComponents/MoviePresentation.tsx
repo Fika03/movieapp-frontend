@@ -1,8 +1,7 @@
-import { IMovie } from "@/app/Models/IMovie";
 import { fetchMovies } from "@/utils/fetchMovies";
-import Image from "next/image";
 import React from "react";
 import MovieCard from "./MovieCard";
+import { IMovie } from "@/models/IMovie";
 
 const MoviePresentation = async () => {
   const movies = await fetchMovies();

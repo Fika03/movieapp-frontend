@@ -1,6 +1,6 @@
 "use client";
 
-import { IMovie } from "@/app/Models/IMovie";
+import { IMovie } from "@/models/IMovie";
 import React, {
   createContext,
   useContext,
@@ -67,7 +67,7 @@ const cartReducer = (state: CartState, action: Action): CartState => {
         ...state,
         items: updatedItems,
         totalAmount: removedItem
-          ? state.totalAmount - removedItem.price
+          ? state.totalAmount - removedItem.amount * removedItem.price
           : state.totalAmount,
       };
       localStorage.setItem("cart", JSON.stringify(newState));
