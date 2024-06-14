@@ -6,10 +6,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-google-maps/api": "^2.19.3",
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
+    "@types/google-map-react": "^2.1.10",
     "autoprefixer": "10.4.17",
     "geist": "^1.2.1",
+    "google-map-react": "^2.2.1",
     "next": "latest",
     "postcss": "8.4.33",
     "react": "18.2.0",
@@ -21,6 +24,7 @@
     "@types/node": "20.11.5",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
-    "encoding": "^0.1.13"
+    "encoding": "^0.1.13",
+    "sass": "^1.77.5"
   }
 }
