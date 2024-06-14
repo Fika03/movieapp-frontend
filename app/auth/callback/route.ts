@@ -8,6 +8,7 @@ export async function GET(request: Request) {
   const next = searchParams.get("next") ?? "/"; // Default redirect URL if 'next' parameter is not provided
 
   const origin = "https://movieapp-frontend-tau.vercel.app";
+  const origin2 = "http://localhost:3000";
 
   // Log the origin and environment for debugging
 
