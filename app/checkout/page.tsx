@@ -2,6 +2,7 @@
 import { CartProducts } from "@/components/checkout/products/CartProducts";
 import { SendOrderToForm } from "@/components/checkout/sendOrderTo/SendOrderToForm";
 import { PayWithStripe } from "@/components/checkout/stripe/PayWithStripe";
+import { useCart } from "@/context/cart/CartContext";
 import {
   CheckoutContext,
   ICheckoutContext,
@@ -9,6 +10,7 @@ import {
 import { ChangeEvent, useState } from "react";
 
 export default function Checkout() {
+  const { state } = useCart();
   const [checkoutState, setCheckoutState] = useState<ICheckoutContext>({
     customerOrderInfo: {
       email: "",
@@ -69,7 +71,11 @@ export default function Checkout() {
             </section>
 
             <section>
-              <PayWithStripe />
+              {state.items.length > 0 ? (
+                <PayWithStripe />
+              ) : (
+                "Your cart is empty"
+              )}
             </section>
           </section>
         </section>

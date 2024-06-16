@@ -7,7 +7,7 @@ export const CartProducts = () => {
   return (
     <section className="flex flex-col items-center">
       <div className="flex flex-col justify-center items-start">
-        {state.items.map((product) => (
+        {state.items?.map((product) => (
           <CartCardProduct key={product.imdbID} movie={product} />
         ))}
       </div>

@@ -35,7 +35,7 @@ export const SelectMoviePage = () => {
     <>
       <section className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
         {data &&
-          data.movies.map((movie) => (
+          data.movies?.map((movie) => (
             <MovieCard movie={movie} key={movie.imdbID} />
           ))}
       </section>
@@ -43,7 +43,7 @@ export const SelectMoviePage = () => {
         {data &&
           Array.from(Array(data.totalPages - 1), (e, i) => {
             return (
-              <div>
+              <div key={i}>
                 <button onClick={() => setPage(i + 1)}>{i + 1}</button>
               </div>
             );

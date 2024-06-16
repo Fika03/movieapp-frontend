@@ -1,6 +1,7 @@
 "use client";
 
 import { IMovie } from "@/models/IMovie";
+import { CartState } from "@/models/cartState";
 import React, {
   createContext,
   useContext,
@@ -8,11 +9,6 @@ import React, {
   useEffect,
   ReactNode,
 } from "react";
-
-interface CartState {
-  items: IMovie[];
-  totalAmount: number;
-}
 
 interface CartContextProps {
   state: CartState;
