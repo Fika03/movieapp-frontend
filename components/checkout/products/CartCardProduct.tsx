@@ -8,9 +8,16 @@ interface IPropCartCardProduct {
 export const CartCardProduct = ({ movie }: IPropCartCardProduct) => {
   const { removeItemFromCart, addItemToCart } = useCart();
   return (
-    <section className="p-4">
-      <article className="flex justify-start items-center">
-        <Image src={movie.Poster} width={50} height={50} alt={movie.Title} />
+    <section className="p-4 w-full">
+      <article className="flex justify-start items-center w-full ">
+        <Image
+          src={movie.Poster}
+          width={50}
+          height={50}
+          alt={movie.Title}
+          priority={true}
+          className="object-cover  w-1/3 xl:w-1/2"
+        />
         <section>
           <h2>{movie.Title}</h2>
           <article>

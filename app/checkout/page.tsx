@@ -2,6 +2,7 @@
 import { CartProducts } from "@/components/checkout/products/CartProducts";
 import { SendOrderToForm } from "@/components/checkout/sendOrderTo/SendOrderToForm";
 import { PayWithStripe } from "@/components/checkout/stripe/PayWithStripe";
+import { Navigate } from "@/components/navigation/Navigate";
 import { useCart } from "@/context/cart/CartContext";
 import {
   CheckoutContext,
@@ -44,38 +45,44 @@ export default function Checkout() {
   return (
     <>
       <CheckoutContext.Provider value={checkoutState}>
-        <h1>Checkout</h1>
-        <section className="xl:flex xl:flex-row-reverse">
-          <article className="hidden md:block">
-            <CartProducts />
-          </article>
-          <section>
-            <article>
-              <button
-                className="md:hidden fixed bg-white text-black w-full top-0 left-0"
-                onClick={() => setOpen((prev) => !open)}
-              >
-                Cart
-              </button>
-
-              {open && (
-                <div className="md:hidden">
-                  <CartProducts />
-                </div>
-              )}
-            </article>
+        <section className="flex flex-col items-center min-h-screen xl:justify-center">
+          <section className="flex">
+            <h1>Checkout</h1>
           </section>
-          <section className="flex justify-center flex-col items-center">
+          <section className="xl:flex xl:flex-row-reverse">
+            <article className="hidden xl:flex xl:justify-center xl:items-center">
+              <CartProducts />
+            </article>
             <section>
-              <SendOrderToForm />
-            </section>
+              <article className="flex justify-center m-3">
+                <button
+                  className="xl:hidden fixed md:w-4/6 bg-white text-black w-full top-0"
+                  onClick={() => setOpen((prev) => !open)}
+                >
+                  Cart
+                </button>
 
-            <section>
-              {state.items.length > 0 ? (
-                <PayWithStripe />
-              ) : (
-                "Your cart is empty"
-              )}
+                {open && (
+                  <div className="xl:hidden">
+                    <CartProducts />
+                  </div>
+                )}
+              </article>
+            </section>
+            <section className="flex justify-center flex-col items-center">
+              <section>
+                <SendOrderToForm />
+              </section>
+
+              <section>
+                {state.items.length > 0 ? (
+                  <PayWithStripe />
+                ) : (
+                  <Navigate navigateTo="./moviespagination">
+                    Your cart is empty. Go shopping
+                  </Navigate>
+                )}
+              </section>
             </section>
           </section>
         </section>
