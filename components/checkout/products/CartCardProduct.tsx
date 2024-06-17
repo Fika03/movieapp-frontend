@@ -15,6 +15,7 @@ export const CartCardProduct = ({ movie }: IPropCartCardProduct) => {
           width={50}
           height={50}
           alt={movie.Title}
+          sizes="100"
           priority={true}
           className="object-cover  w-1/3 xl:w-1/2"
         />
