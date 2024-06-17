@@ -2,6 +2,7 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { CartProvider } from "@/context/cart/CartContext";
+import { ContactsFooter } from "@/components/footer/contacts/ContactsFooter";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -30,6 +31,9 @@ export default function RootLayout({
             <main className="min-h-screen flex flex-col items-center">
               {children}
             </main>
+            <footer>
+              <ContactsFooter />
+            </footer>
           </body>
         </CartProvider>
         <GoogleAnalytics gaId="G-5ENK2VSP5J" />
