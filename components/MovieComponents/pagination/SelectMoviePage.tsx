@@ -1,3 +1,4 @@
+"use client";
 import { IMoviePagination } from "@/models/IMoviePagination";
 import { fetchXMovies } from "@/utils/fetchXMovies";
 import { useEffect, useState } from "react";
