@@ -1,6 +1,6 @@
-Filip:Google analytics + api routs i next och fetching
-Simon:Suberbase inlogg, google och vanlig
-Thedor: Express + strype checkout
+Filip:Google analytics + api routs i next och fetching,
+Simon:Suberbase inlogg, google och vanlig,
+Thedor: Express + strype checkout,
 Erik:Kontaktsida + map
 
 
