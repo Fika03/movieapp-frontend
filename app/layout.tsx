@@ -28,7 +28,7 @@ export default function RootLayout({
           defer
         ></script>
         <CartProvider>
-          <body className="min-h-screen bg-background text-foreground flex flex-col justify-between items-center ">
+          <body className="min-h-screen bg-background text-foreground flex flex-col justify-between  ">
             <main className="min-h-screen ">{children}</main>
             <footer>
               <ContactsFooter />
