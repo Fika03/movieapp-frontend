@@ -1,7 +1,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { SelectMoviePage } from "@/components/MovieComponents/pagination/SelectMoviePage";
-import AuthButton from "@/components/AuthButton";
 
 export default async function ProtectedPage() {
   const supabase = createClient();
@@ -16,9 +15,7 @@ export default async function ProtectedPage() {
 
   return (
     <section className=" w-full flex flex-col  items-center ">
-      <div className=" flex flex-col justify-center items-center w-[90%]">
-        <SelectMoviePage />
-      </div>
+      <SelectMoviePage />
     </section>
   );
 }
