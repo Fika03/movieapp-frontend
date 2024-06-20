@@ -21,7 +21,7 @@ export default async function AuthButton() {
     <div className="flex items-center gap-4">
       <section className="flex flex-col justify-center items-center md:flex-row ">
         <div>
-          <span className="hidden md:block">Hey, </span>
+          <span className="hidden md:inline">Hey, </span>
           {user.email}!
         </div>
         <form action={signOut}>
