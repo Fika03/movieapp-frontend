@@ -78,7 +78,7 @@ export default function Checkout() {
                 {state.items.length > 0 ? (
                   <PayWithStripe />
                 ) : (
-                  <Navigate navigateTo="./moviespagination">
+                  <Navigate navigateTo="/movies">
                     Your cart is empty. Go shopping
                   </Navigate>
                 )}
