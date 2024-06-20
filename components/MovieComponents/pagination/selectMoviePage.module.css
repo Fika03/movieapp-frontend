@@ -1,0 +1,6 @@
+.selectedPage {
+  background-color: rgb(59 130 246);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}

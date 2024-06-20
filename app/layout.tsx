@@ -3,6 +3,7 @@ import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { CartProvider } from "@/context/cart/CartContext";
 import { ContactsFooter } from "@/components/footer/contacts/ContactsFooter";
+import { Header } from "@/components/header/Header";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -27,8 +28,11 @@ export default function RootLayout({
           defer
         ></script>
         <CartProvider>
-          <body className="bg-background text-foreground">
-            <main className="min-h-screen flex flex-col items-center">
+          <body className="bg-background text-foreground flex flex-col justify-center">
+            <header>
+              <Header />
+            </header>
+            <main className="min-h-screen flex flex-col items-center justify-center">
               {children}
             </main>
             <footer>

@@ -5,7 +5,6 @@
 }
 
 .movieCard:hover {
-  background-color: white;
   box-shadow: 0px 0px 0px 10px rgb(255, 255, 255);
   border-radius: 5px;
 }

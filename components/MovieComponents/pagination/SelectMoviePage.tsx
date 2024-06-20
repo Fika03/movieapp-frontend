@@ -3,6 +3,7 @@ import { IMoviePagination } from "@/models/IMoviePagination";
 import { fetchXMovies } from "@/utils/fetchXMovies";
 import { useEffect, useState } from "react";
 import MovieCard from "../MovieCard";
+import style from "./selectMoviePage.module.css";
 
 export const SelectMoviePage = () => {
   const [page, setPage] = useState<number>(1);
@@ -34,18 +35,23 @@ export const SelectMoviePage = () => {
 
   return (
     <>
-      <section className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+      <section className="flex flex-col justify-center items-center md:w-[100%] md:flex-wrap md:flex-row xl:w-[70%]">
         {data &&
           data.movies?.map((movie) => (
             <MovieCard movie={movie} key={movie.imdbID} />
           ))}
       </section>
-      <section>
+      <section className="flex items-center justify-center">
         {data &&
           Array.from(Array(data.totalPages - 1), (e, i) => {
             return (
-              <div key={i}>
-                <button onClick={() => setPage(i + 1)}>{i + 1}</button>
+              <div className="m-3" key={i}>
+                <button
+                  className={page === i + 1 ? style.selectedPage : ""}
+                  onClick={() => setPage(i + 1)}
+                >
+                  {i + 1}
+                </button>
               </div>
             );
           })}
