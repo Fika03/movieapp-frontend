@@ -16,9 +16,6 @@ export default async function ProtectedPage() {
 
   return (
     <section className=" w-full flex flex-col  items-center ">
-      <div>
-        <AuthButton />
-      </div>
       <div className=" flex flex-col justify-center items-center w-[90%]">
         <SelectMoviePage />
       </div>
