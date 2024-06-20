@@ -14,20 +14,25 @@ const MovieCard = ({ movie }: Props) => {
       href={`/movies/${movie.imdbID}`}
       className={
         style.movieCard +
-        " flex flex-col justify-center items-center bg-gray-200 shadow-sm "
+        " flex flex-row-reverse justify-start items-center max-w-[482px] bg-white shadow-sm w-[100%] h-[200px] md:w-[45%] "
       }
     >
-      <h2 className="text-black">{movie.Title}</h2>
+      <article className="w-[100%] m-2">
+        <h2 className="text-black font-bold mb-2">{movie.Title}</h2>
+        <span className="text-black">Price: {movie.price} kr</span>
+      </article>
+
       <div
         key={movie?.imdbID}
-        className="relative w-11/12 h-[100px] md:h-[200px] lg:h-[500px] "
+        className="relative w-11/12 h-[180px] max-w-[130px] m-1"
       >
         <Image
           src={movie?.Poster}
           alt={movie?.Title}
-          layout="fill"
+          fill
           priority={true}
-          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-contain"
         />
       </div>
     </Link>
