@@ -20,7 +20,7 @@ export default async function AuthButton() {
   return user ? (
     <div className="flex items-center gap-4">
       <section className="flex flex-col justify-center items-center md:flex-row ">
-        <div>
+        <div className="m-2">
           <span className="hidden md:inline">Hey, </span>
           {user.email}!
         </div>
