@@ -10,8 +10,8 @@ const defaultUrl = process.env.VERCEL_URL
   : "https://youtube.com/";
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "Su Movies",
+  description: "",
 };
 
 export default function RootLayout({
@@ -28,13 +28,8 @@ export default function RootLayout({
           defer
         ></script>
         <CartProvider>
-          <body className="bg-background text-foreground flex flex-col justify-center">
-            <header>
-              <Header />
-            </header>
-            <main className="min-h-screen flex flex-col items-center justify-center">
-              {children}
-            </main>
+          <body className="min-h-screen bg-background text-foreground flex flex-col justify-between items-center ">
+            <main className="min-h-screen ">{children}</main>
             <footer>
               <ContactsFooter />
             </footer>

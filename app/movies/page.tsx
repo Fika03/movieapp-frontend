@@ -1,17 +1,9 @@
-import MoviePresentation from "@/components/MovieComponents/MoviePresentation";
-import React from "react";
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { SelectMoviePage } from "@/components/MovieComponents/pagination/SelectMoviePage";
 
-const MoviePage = async () => {
+export default async function Main() {
   return (
-    <>
-      <MaxWidthWrapper>
-        <section className="w-full flex justify-center items-center">
-          <MoviePresentation />
-        </section>
-      </MaxWidthWrapper>
-    </>
+    <div className=" w-full flex flex-col  items-center">
+      <SelectMoviePage />
+    </div>
   );
-};
-
-export default MoviePage;
+}

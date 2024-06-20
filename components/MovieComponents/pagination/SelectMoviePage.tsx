@@ -34,7 +34,7 @@ export const SelectMoviePage = () => {
   }
 
   return (
-    <>
+    <div className="flex flex-col justify-center items-center w-[90%]">
       <section className="flex flex-col justify-center items-center md:w-[100%] md:flex-wrap md:flex-row xl:w-[70%]">
         {data &&
           data.movies?.map((movie) => (
@@ -56,6 +56,6 @@ export const SelectMoviePage = () => {
             );
           })}
       </section>
-    </>
+    </div>
   );
 };
