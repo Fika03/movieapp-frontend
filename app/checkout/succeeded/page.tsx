@@ -3,7 +3,7 @@
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
-export default function () {
+export default function checkoutSucceeded() {
   const searchParams = useSearchParams();
 
   const paymentDescription = searchParams.get("payment_intent");
