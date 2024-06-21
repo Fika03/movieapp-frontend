@@ -8,7 +8,6 @@ import {
   CheckoutContext,
   ICheckoutContext,
 } from "@/context/checkout/CheckoutContext";
-import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 
 export default function Checkout() {

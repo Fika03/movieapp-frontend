@@ -1,3 +1,4 @@
+"use client";
 import { CheckoutContext } from "@/context/checkout/CheckoutContext";
 import { FormEvent, useContext } from "react";
 import styles from "./SendOrderToForm.module.css";
@@ -7,6 +8,7 @@ export const SendOrderToForm = () => {
 
   const saveOrderInformation = (e: FormEvent) => {
     e.preventDefault();
+    console.log(customerOrderInfo);
   };
 
   return (
