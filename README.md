@@ -1,10 +1,7 @@
-Filip:Google analytics + api routs i next och fetching,
-Simon:Suberbase inlogg, google och vanlig,
-Thedor: Express + strype checkout,
-Erik:Kontaktsida + map
-
-
-
+Filip: Google analytics + fetcha movies och displaya dem, med dynamiska single page för varje movie.
+Simon: Integration av inlogg med hjälp av supabase
+Thedor: Backend, Express server, api:et, paginering + stripe checkout.
+Erik:Kontaktsida + google maps
 
 <a href="https://demo-nextjs-with-supabase.vercel.app/">
   <img alt="Next.js and Supabase Starter Kit - the fastest way to build apps with Next.js and Supabase" src="https://demo-nextjs-with-supabase.vercel.app/opengraph-image.png">
