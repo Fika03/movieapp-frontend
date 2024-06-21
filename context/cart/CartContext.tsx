@@ -14,6 +14,7 @@ interface CartContextProps {
   state: CartState;
   addItemToCart: (item: IMovie) => void;
   removeItemFromCart: (item: IMovie) => void;
+  removeOneItemFromCart: (item: IMovie) => void;
 }
 
 const CartContext = createContext<CartContextProps | undefined>(undefined);
@@ -26,10 +27,36 @@ const initialState: CartState = {
 type Action =
   | { type: "ADD_ITEM"; payload: IMovie }
   | { type: "REMOVE_ITEM"; payload: IMovie }
-  | { type: "INITIALIZE_CART"; payload: CartState };
+  | { type: "INITIALIZE_CART"; payload: CartState }
+  | { type: "REMOVE_ONE_ITEM"; payload: IMovie };
 
 const cartReducer = (state: CartState, action: Action): CartState => {
   switch (action.type) {
+    case "REMOVE_ONE_ITEM": {
+      const existingItemIndex = state.items.findIndex(
+        (item) => item.imdbID === action.payload.imdbID
+      );
+      let updatedItems;
+      if (existingItemIndex !== -1) {
+        updatedItems = state.items.map((item, index) =>
+          index === existingItemIndex && item.amount > 1
+            ? { ...item, amount: item.amount - 1 }
+            : item
+        );
+      } else {
+        updatedItems = [...state.items, { ...action.payload, amount: 1 }];
+      }
+      const updatedState = {
+        ...state,
+        items: updatedItems,
+        totalAmount:
+          action.payload.amount > 1
+            ? state.totalAmount - action.payload.price
+            : state.totalAmount,
+      };
+      localStorage.setItem("cart", JSON.stringify(updatedState));
+      return updatedState;
+    }
     case "ADD_ITEM": {
       const existingItemIndex = state.items.findIndex(
         (item) => item.imdbID === action.payload.imdbID
@@ -102,9 +129,19 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   const removeItemFromCart = (item: IMovie) => {
     dispatch({ type: "REMOVE_ITEM", payload: item });
   };
+  const removeOneItemFromCart = (item: IMovie) => {
+    dispatch({ type: "REMOVE_ONE_ITEM", payload: item });
+  };
 
   return (
-    <CartContext.Provider value={{ state, addItemToCart, removeItemFromCart }}>
+    <CartContext.Provider
+      value={{
+        state,
+        addItemToCart,
+        removeItemFromCart,
+        removeOneItemFromCart,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -55,7 +55,8 @@ export function CheckoutForm() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000/checkout/succeeded",
+        return_url:
+          "https://movieapp-frontend-tau.vercel.app/checkout/succeeded",
       },
     });
 
@@ -73,11 +74,25 @@ export function CheckoutForm() {
   };
 
   return (
-    <form id="payment-form" onSubmit={handleSubmit}>
+    <form
+      id="payment-form"
+      onSubmit={handleSubmit}
+      className="flex flex-col justify-center items-center w-full"
+    >
       <PaymentElement id="payment-element" options={paymentElementOptions} />
-      <button disabled={isLoading || !stripe || !elements} id="submit">
+      <button
+        disabled={isLoading || !stripe || !elements}
+        id="submit"
+        className="m-2"
+      >
         <span id="button-text">
-          {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
+          {isLoading ? (
+            <div className="spinner" id="spinner"></div>
+          ) : (
+            <span className="bg-green-500 rounded border-solid border-2 border-green-500 hover:bg-green-700 transition duration-200">
+              Pay now
+            </span>
+          )}
         </span>
       </button>
       {/* Show any error or success messages */}

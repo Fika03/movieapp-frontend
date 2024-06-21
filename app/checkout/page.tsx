@@ -8,6 +8,7 @@ import {
   CheckoutContext,
   ICheckoutContext,
 } from "@/context/checkout/CheckoutContext";
+import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 
 export default function Checkout() {
@@ -56,7 +57,7 @@ export default function Checkout() {
             <section>
               <article className="flex justify-center m-3">
                 <button
-                  className="xl:hidden fixed md:w-4/6 bg-white text-black w-full top-0"
+                  className="xl:hidden fixed z-10 md:w-4/6 bg-white text-black w-full top-0"
                   onClick={() => setOpen((prev) => !open)}
                 >
                   Cart

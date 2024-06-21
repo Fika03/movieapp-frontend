@@ -34,7 +34,14 @@ export const PayWithStripe = () => {
 
   return (
     <>
-      <button onClick={payWithStripe}>Pay with Stripe</button>
+      {!clientSecret && (
+        <button
+          className="bg-white rounded border-2 text-black text-red border-solid border-white"
+          onClick={payWithStripe}
+        >
+          Pay with Stripe
+        </button>
+      )}
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
           <CheckoutForm />
