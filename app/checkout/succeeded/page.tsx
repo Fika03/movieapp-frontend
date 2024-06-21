@@ -9,11 +9,11 @@ export default function () {
   const paymentDescription = searchParams.get("payment_intent");
 
   return (
-    <section>
-      <h1>succeeded</h1>
-      <Suspense>
+    <Suspense>
+      <section>
+        <h1>succeeded</h1>
         <span>Your payment Id is: {paymentDescription} </span>
-      </Suspense>
-    </section>
+      </section>
+    </Suspense>
   );
 }
