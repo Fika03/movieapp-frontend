@@ -55,7 +55,8 @@ export function CheckoutForm() {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000/checkout/succeeded",
+        return_url:
+          "https://movieapp-frontend-tau.vercel.app/checkout/succeeded",
       },
     });
 
