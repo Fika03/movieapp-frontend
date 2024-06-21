@@ -10,7 +10,7 @@ export default function () {
   return (
     <section>
       <h1>succeeded</h1>
-      <span>Your payment Id: {paymentDescription} </span>
+      <span>Your payment Id is: {paymentDescription} </span>
     </section>
   );
 }

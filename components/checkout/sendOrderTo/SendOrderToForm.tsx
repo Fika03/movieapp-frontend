@@ -1,4 +1,3 @@
-"use client";
 import { CheckoutContext } from "@/context/checkout/CheckoutContext";
 import { FormEvent, useContext } from "react";
 import styles from "./SendOrderToForm.module.css";
