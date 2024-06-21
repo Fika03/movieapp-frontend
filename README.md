@@ -1,3 +1,5 @@
+## Vercel: https://movieapp-frontend-tau.vercel.app
+
 Filip: Google analytics + fetcha movies och displaya dem, med dynamiska single page för varje movie.
 Simon: Integration av inlogg med hjälp av supabase
 Theodor: Backend, Express server, api:et, paginering + stripe checkout.
