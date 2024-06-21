@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 export default function () {
   const searchParams = useSearchParams();
 
-  const paymentDescription = searchParams.get("payment_intent");
+  const paymentDescription = searchParams.get("payment_intent") || " ";
 
   return (
     <section>
