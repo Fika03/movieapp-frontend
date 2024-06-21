@@ -1,6 +1,6 @@
 Filip: Google analytics + fetcha movies och displaya dem, med dynamiska single page för varje movie.
 Simon: Integration av inlogg med hjälp av supabase
-Thedor: Backend, Express server, api:et, paginering + stripe checkout.
+Theodor: Backend, Express server, api:et, paginering + stripe checkout.
 Erik:Kontaktsida + google maps
 
 ## Features
